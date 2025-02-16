@@ -1,0 +1,13 @@
+.footer-content {
+    background-color: white;
+    display: block;
+    text-align: center;
+    padding: 1rem 0;
+    border: 2px #27384c solid;
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .footer-content {
+      font-size: 1.2rem;
+    }
+  }

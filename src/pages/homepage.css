@@ -1,0 +1,782 @@
+.home {
+    margin: 4rem 0 1rem;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+    border-bottom: 2px #27384c solid;
+  }
+  
+  .home .home-content {
+    align-self: center;
+  }
+  
+  .home .home-content h2 {
+    font-family: 'Abhaya Libre', serif;
+    font-weight: 700;
+    font-size:3rem;
+    padding:  0;
+    color: #27384c;
+  }
+  .home .home-content h4{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: black;
+  } 
+  .home .home-content h5 {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: black;
+  }
+  
+  .home .home-content .btn {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+  }
+  
+  .home .image {
+    width: 35rem;
+    overflow: hidden;
+  }
+  
+  .home .image img {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .home .gear {
+    width: 35vw;
+  }
+  
+  .home .gear .gear1 {
+    width: 70%;
+    position: absolute;
+    z-index: -100;
+    bottom: 40%;
+    left: 50%;
+    opacity: 0.5;
+  }
+  
+  .home .gear .gear2 {
+    width: 30%;
+    position: absolute;
+    z-index: -100;
+    bottom: 70%;
+    right: 80%;
+    opacity: 0.5;
+  }
+  
+  .home .gear .gear3 {
+    width: 40%;
+    position: absolute;
+    z-index: -100;
+    bottom: -50%;
+    right: 80%;
+    opacity: 0.5;
+  }
+  
+  /*------------------------about----------------------*/
+  .about {
+    padding: 2rem 0;
+  }
+  
+  .about .about-header {
+    font-family: 'Abhaya Libre', serif;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .about .about-header h1 {
+    color:#27384c;
+    font-size: 4rem;
+  }
+  
+  .about .about-header h3 {
+    color:#000;
+    font-size: 2rem;
+  }
+  
+  .about .flex-wrap {
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  
+  .about .about-content {
+    color: black;
+    flex: 1 1 30rem;
+    padding: 0 2rem;
+  }
+  
+  .about .about-content h3 {
+    font-size: 26px;
+    margin-left: 1rem;
+  }
+  
+  .about .about-content p {
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 1rem 1rem;
+  }
+  
+  .about .about-image {
+    flex: 1 1 30rem;
+  }
+  
+  .about .about-image img {
+    margin-right: 5rem;
+    width: 90%;
+    object-fit: cover;
+  }
+  
+  .about .about-wrapper {
+    background-color: rgb(250, 250, 250);
+    border-radius: 20px;
+    position: relative;
+    margin: 5rem 0;
+  }
+  
+  .about .card-text {
+    background-color: #27384c;
+    border-radius: 20px 20px 0 0;
+    font-size: 2.5rem;
+  }
+  
+/* Skill Section Styling */
+.skill-section {
+  padding: 2rem;
+  background-color: white;
+}
+
+.skill-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.skill-title {
+  font-family: 'Abhaya Libre', serif;
+  font-size: 3.5rem;
+  color: #27384c;
+  margin-bottom: 2rem;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  background-color: #27384c;
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.skill-category {
+  font-size: 1rem;
+  color: white;
+  margin: 0;
+}
+
+
+  
+  /*----------------project------------------*/
+  .project{
+    margin: 3rem 0;
+    padding: 2rem 0;
+    border: #27384c 2px solid;
+    background-color: #27384c;
+    border-radius: 20px;
+  }
+  .project-section {
+    padding-bottom: 5rem;
+  }
+  
+  .project-section .project-header {
+    font-family: 'Abhaya Libre', serif;
+    text-align: center;
+    margin: 3rem 0;
+  }
+  
+  .project-section .project-header h1 {
+    color:#27384c;
+    font-size: 4rem;
+  }
+  
+  .project-section .project-header h3 {
+    color: #000;
+    font-size: 2rem;
+  }
+  
+  .project-section .projects .flex-wrap:nth-child(1),
+  .project-section .projects .flex-wrap:nth-child(3),
+  .project-section .projects .flex-wrap:nth-child(5),
+  .project-section .projects .flex-wrap:nth-child(7) {
+    flex-direction: row-reverse;
+  }
+  
+  /* .project-section .projects .project {
+    margin: 5rem 1rem;
+  } */
+  
+  .project-section .projects .project .project-content {
+    width: 26rem;
+  }
+  
+  .project-section .projects .project .project-content p {
+    padding: 1.5rem 1rem;
+    line-height: 1.3;
+    font-size: 18px;
+    color: #ffffff;
+  }
+  
+  .project-section .projects .project .project-content h1 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    padding: 0 1rem;
+  }
+  
+  .project-section .projects .project .project-content h1 span {
+    font-size: 1rem;
+    color: #ffffff;
+  }
+  
+  .project-section .projects .project .project-content .project-buttoms {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .project-section .projects .project .project-content .project-buttoms .project-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    background-color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+    height: 4rem;
+    padding: 1rem;
+  }
+  
+  .project-section .projects .project .project-content .project-buttoms .project-btn:hover {
+    transform: scale(0.95);
+  }
+  
+  .project-section .projects .project .project-content .project-buttoms .project-btn i {
+    margin-left: 5px;
+    font-size: 1.3rem;
+  }
+  
+  .project-section .projects .project .project-content .project-buttoms .project-btn p {
+    color: #000;
+  }
+  
+  .project-section .projects .project .project-content .video-btn {
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+  }
+  
+  .project-section .projects .project .image {
+    width: 25rem;
+    overflow: hidden;
+  }
+  
+  .project-section .projects .project .image img {
+    width: 100%;
+    object-fit: cover;
+  }
+  
+  .contact {
+    padding-bottom: 5rem;
+  }
+  
+  .contact .contact-header {
+    font-family: 'Abhaya Libre', serif;
+    text-align: center;
+    padding: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact .contact-header h1 {
+    font-size: 4rem;
+  }
+  
+  .contact .contact-header h3 {
+    font-size: 2rem;
+  }
+  
+  .contact form {
+    width: 50rem;
+  }
+  
+  .contact form label {
+    color: #27384c;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  
+  .contact form .box {
+    padding: 0.5rem;
+    margin: 1rem 0;
+    font-size: 1.3rem;
+    color: #000;
+    text-transform: none;
+    border: none;
+    background-color: #f0f0f0;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0.3rem 0.9rem rgba(0, 0, 0, 0.2);
+  }
+  
+  .contact form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 16px;
+    margin: 1rem 0;
+    resize: none;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 0.3rem 0.9rem rgba(0, 0, 0, 0.2);
+    border: 0;
+  }
+  
+  .contact form input[type='submit'] {
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .bg-color-1 {
+    background-color: rgb(247, 247, 247);
+    transition: all 1.8s ease;
+    font-weight: 500;
+  }
+  
+  .bg-color-1 h3 {
+    color: black;
+  }
+  
+  .bg-color-1 h1 {
+    color: black;
+  }
+  
+  /*---------certification---------*/
+  .certification {
+    background-color: black;
+  }
+  
+  .certification .cer-header {
+    font-family: 'Abhaya Libre', serif;
+    text-align: center;
+    padding: 1.8rem;
+  }
+  
+  .certification .cer-header h1 {
+    font-size: 4rem;
+  }
+  
+  .certification .cer-header h3 {
+    font-size: 2rem;
+  }
+  
+  .certification .cer-container {
+    position: relative;
+    min-height: 80vh;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 2rem;
+  }
+  
+  .certification .cer-container .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 2rem;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .certification .cer-container .image-container .imageWrapper {
+    padding: 1rem;
+  }
+  
+  .certification .cer-container .imageContent {
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+  }
+  
+  .certification .cer-container .imageContent p {
+    padding: 0.2rem 0;
+  }
+  
+  .certification .cer-container .imageContent p span {
+    font-weight: 700;
+  }
+  
+  .certification .cer-container .imageContent .line {
+    font-weight: 700;
+  }
+  
+  .certification .cer-container .image-container .image {
+    height: 250px;
+    width: 350px;
+    border: 10px solid #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .certification .cer-container .image-container .image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: 0.2s linear;
+  }
+  
+  .certification .cer-container .image-container .image:hover img {
+    transform: scale(1.1);
+  }
+  
+  .certification .cer-container .popup-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+  }
+  
+  .certification .cer-container .popup-image span {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    font-size: 60px;
+    font-weight: bolder;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .certification .cer-container .popup-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 5px;
+    width: 800px;
+    object-fit: cover;
+  }
+  
+  @media only screen and (max-width: 1070px) {
+    .project-section {
+      padding: 0;
+    }
+  
+    .project-section .project p {
+      text-align: center;
+    }
+  
+    .project-section .project .project-buttoms {
+      text-align: center;
+    }
+  }
+  
+  @media only screen and (max-width: 895px) {
+    .home {
+      padding: 1rem 0;
+    }
+  
+    .home .home-content {
+      font-family: 'Abhaya Libre', serif;
+      align-self: center;
+      text-align: center;
+      margin: 4rem 1rem;
+    }
+  
+    .home .gear .gear1 {
+      width: 65%;
+      position: absolute;
+      z-index: -100;
+      bottom: 80%;
+      left: 60%;
+      opacity: 0.5;
+    }
+  
+    .home .gear .gear2 {
+      width: 30%;
+      position: absolute;
+      z-index: -100;
+      bottom: 60%;
+      right: 80%;
+      opacity: 0.5;
+    }
+  
+    .home .gear .gear3 {
+      width: 40%;
+      position: absolute;
+      z-index: -100;
+      top: 90%;
+      right: 80%;
+      opacity: 0.5;
+    }
+    .about{
+      padding: 0;
+    }
+    .about .about-wrapper {
+      margin: 2rem 0;
+    }
+  
+    .about .about-icons .icon-text {
+      padding: 0;
+      margin: 0;
+    }
+  
+    .about .about-icons .icon {
+      text-align: center;
+    }
+  
+    .about .about-icons .icon img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+    }
+  
+    .about .about-icons .icon .elementor {
+      width: 150px;
+      height: auto;
+    }
+  
+    .about .about-icons .icon .woocommerce {
+      width: 90px;
+      height: auto;
+    }
+  
+    .certification .cer-container .popup-image img {
+      width: 95%;
+    }
+  }
+  
+  @media only screen and (max-width: 550px) {
+    .about {
+      padding: 0;
+    }
+    .about .about-contact{
+      padding: 0;
+    }
+  
+    .about .about-body {
+      padding: 1rem 0;
+      margin: 0;
+    }
+  
+    .about .about-header {
+      font-family: 'Abhaya Libre', serif;
+      text-align: center;
+    }
+  
+    .about .about-header h1 {
+      font-size: 3rem;
+    }
+  
+    .about .about-header h3 {
+      font-size: 1.5rem;
+    }
+  
+    .about .about-icons .grid-3 {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  
+    .about .about-content {
+      flex: 1 1 32rem;
+      text-align: center;
+    }
+  
+    .about .about-content p {
+      padding: 1rem 10px;
+      font-size: 14px;
+    }
+  
+    .about .about-image {
+      padding-left: 2rem;
+    }
+  
+    .about .about-wrapper {
+      margin: 3rem 0;
+    }
+  
+    .about .about-icons {
+      flex: 1 1 32rem;
+    }
+  
+    .about .about-icons .icon-text {
+      text-align: center;
+      margin-left: 0;
+      font-size: 2.5rem;
+      padding: 0;
+    }
+  
+    .about .about-icons .icon {
+      text-align: center;
+    }
+  
+    .about .about-icons .icon img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+    }
+  
+    .about .about-icons .icon .php {
+      width: 100px;
+      height: auto;
+      object-fit: cover;
+    }
+  
+    .about .about-icons .icon .elementor {
+      width: 150px;
+      height: auto;
+    }
+  
+    .about .about-icons .icon .woocommerce {
+      margin-top: 15px;
+      width: 90px;
+      height: auto;
+    }
+  
+    .about .card-text {
+      font-size: 1.8rem;
+    }
+  
+    .project-section .project-header {
+      font-family: 'Abhaya Libre', serif;
+      text-align: center;
+    }
+  
+    .project-section .project-header h1 {
+      font-size: 3rem;
+    }
+  
+    .project-section .project-header h3 {
+      font-size: 1.5rem;
+    }
+  
+    .project-section .projects .project {
+      margin: 4rem 1rem;
+    }
+  
+    .project-section .projects .project .project-content {
+      width: 26rem;
+      text-align: center;
+    }
+  
+    .project-section .projects .project .project-content p {
+      padding: 0.8rem 1rem;
+      font-size: 14px;
+      color: #fff;
+    }
+  
+    .project-section .projects .project .project-content h1 {
+      color: #fff;
+      font-size: 2rem;
+      padding: 0 1rem;
+    }
+  
+    .project-section .projects .project .project-content h1 span {
+      font-size: 0.8rem;
+    }
+  
+    .project-section .projects .project .project-content .project-buttoms {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+  
+    .project-section .projects .project .project-content .project-buttoms .project-btn {
+      justify-content: center;
+      height: 3.5rem;
+      padding: 1rem;
+      text-align: center;
+      margin: 0 20px;
+    }
+  
+    .project-section .projects .project .image {
+      width: 38rem;
+      overflow: hidden;
+    }
+  
+    .project-section .projects .project .image img {
+      width: 100%;
+      object-fit: cover;
+    }
+  
+    .contact .contact-header {
+      font-family: 'Abhaya Libre', serif;
+      text-align: center;
+      padding: 1.8rem;
+    }
+  
+    .contact .contact-header h1 {
+      font-size: 3rem;
+    }
+  
+    .contact .contact-header h3 {
+      font-size: 1.5rem;
+    }
+  
+    .certification .cer-header {
+      font-family: 'Abhaya Libre', serif;
+      text-align: center;
+      padding: 1.8rem;
+    }
+  
+    .certification .cer-header h1 {
+      font-size: 3rem;
+    }
+  
+    .certification .cer-header h3 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* Responsive Design */
+@media (max-width: 768px) {
+  .skill-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .skill-title {
+    font-size: 2rem;
+  }
+
+  .skill-category {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-title {
+    font-size: 1.75rem;
+  }
+}
