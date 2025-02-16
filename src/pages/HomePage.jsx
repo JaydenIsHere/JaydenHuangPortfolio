@@ -1,6 +1,6 @@
 
 import MyPhoto from '../images/Corporate_photo.png';
-import OrangeTee from '../images/OrangeTeeAndTie.jpg';
+import OrangeTee from '../images/Tee.jpg';
 import SmartSeller from '../images/SmartSeller.jpg';
 import STWarrior from '../images/STWarrior.png';
 import aboutImage from '../images/AboutMe.png'; // Make sure to import JDweb
