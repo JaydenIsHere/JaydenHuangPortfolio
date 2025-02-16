@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+
 import MyPhoto from '../images/Corporate_photo.png';
-import OrangeTee from '../images/OrangeTee.png';
+import OrangeTee from '../images/OrangeTee&Tie.jpg';
 import SmartSeller from '../images/SmartSeller.jpg';
 import STWarrior from '../images/STWarrior.png';
 import aboutImage from '../images/AboutMe.png'; // Make sure to import JDweb
