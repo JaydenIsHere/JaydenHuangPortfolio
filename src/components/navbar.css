@@ -52,6 +52,7 @@
   }
   
   .header .menu-icon {
+    color: white;
     font-size: 2rem;
     cursor: pointer;
     display: none;

@@ -609,7 +609,7 @@
     }
   
     .about .about-content p {
-      padding: 1rem 10px;
+      padding: 0.8rem 0;
       font-size: 14px;
     }
   
@@ -718,7 +718,7 @@
     }
   
     .project-section .projects .project .image {
-      width: 38rem;
+      width: 15rem;
       overflow: hidden;
     }
   
