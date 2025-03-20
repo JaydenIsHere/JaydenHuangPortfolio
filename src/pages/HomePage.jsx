@@ -153,7 +153,7 @@ const HomePage = () => {
                     className='project-btn'
                     onClick={() =>
                       (window.location.href =
-                        'https://docs.google.com/presentation/d/1YZHtsrhHRvLdBt2fnVZzS2qIjk5X6OgDH3vWLMi5cUk/edit?usp=sharing')
+                        'https://hippopropsg-my.sharepoint.com/:p:/g/personal/vanessa_hippoprop_com/EaPIaKLfIvFDv622GgDWETIBkt5Tp-OdOgN_UJxpxGTWVQ?rtime=Tg9nI6Bn3Ug')
                     }
                   >
                     <i class="fas fa-chart-bar"></i>
