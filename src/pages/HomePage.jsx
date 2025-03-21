@@ -153,7 +153,7 @@ const HomePage = () => {
                     className='project-btn'
                     onClick={() =>
                       (window.location.href =
-                        'https://drive.google.com/file/d/1l_gEFcm_uv1gyYwr5TwGWuUAqA64KaVm/view?usp=sharing')
+                        'https://drive.google.com/file/d/1Rwdu5KTV_C9jVoyo2DsS2EWGpkKDtMpd/view?usp=sharing')
                     }
                   >
                     <i class="fas fa-chart-bar"></i>
