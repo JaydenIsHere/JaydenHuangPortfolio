@@ -102,7 +102,7 @@ const HomePage = () => {
                   <div className='project-btn' onClick={() => (window.location.href = 'https://www.tiktok.com/@sg.smartseller')}>
                     <i className='fa-solid fa-code' /><p>Visit</p>
                   </div>
-                  <div className='project-btn' onClick={() => (window.location.href = 'https://drive.google.com/file/d/1Rwdu5KTV_C9jVoyo2DsS2EWGpkKDtMpd/view?usp=sharing')}>
+                  <div className='project-btn' onClick={() => (window.location.href = 'https://drive.google.com/file/d/1vq1MSsNxxqkk9drYMmF3o3LaXlxMkQ5Z/view?usp=sharing')}>
                     <i className="fas fa-chart-bar"></i><p>Project Detail</p>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ const HomePage = () => {
                   <div className='project-btn' onClick={() => (window.location.href = 'https://www.youtube.com/@orangeteeagentshub')}>
                     <i className='fa-solid fa-code' /><p>Visit</p>
                   </div>
-                  <div className='project-btn' onClick={() => (window.location.href = 'https://drive.google.com/drive/folders/10j225rgha4KqPVARM5cXPokqCWYHaLWZ?usp=sharing')}>
+                  <div className='project-btn' onClick={() => (window.location.href = 'https://docs.google.com/presentation/d/14MlbXdhktPlqGdL-8Qso1HYvad1vGUBuNUHT38UCynQ/edit?usp=sharing')}>
                     <i className="fas fa-chart-bar"></i><p>Project Detail</p>
                   </div>
                 </div>
