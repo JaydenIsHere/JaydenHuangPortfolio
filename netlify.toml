@@ -1,4 +1,5 @@
-# Plain static site: no build step, publish the repo root as-is.
+# Plain static site: no build step. The site lives in dist/ (matches the
+# publish directory already set in the Netlify UI).
 [build]
-  publish = "."
+  publish = "dist"
   command = "echo 'static site, no build'"
