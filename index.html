@@ -1,17 +1,566 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jayden Huang | AI-Powered Social Media Manager</title>
+<meta name="description" content="AI-powered social media manager in Singapore: AI-assisted video, Meta and TikTok ads, lead landing pages and automated follow-up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #05070d;
+    --bg-2: #0a0f1c;
+    --panel: rgba(16, 24, 44, 0.62);
+    --line: rgba(120, 200, 255, 0.16);
+    --line-strong: rgba(120, 200, 255, 0.38);
+    --text: #e6edf7;
+    --muted: #8a97ad;
+    --cyan: #3be8ff;
+    --violet: #9b6bff;
+    --green: #4dffa6;
+    --grad: linear-gradient(100deg, var(--cyan), var(--violet));
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    --sans: "Space Grotesk", system-ui, -apple-system, sans-serif;
+    --r: 14px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   
-  
-    <!-- font-awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Jayden Huang Portfolio</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  /* background: grid + glow */
+  .bg { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+      radial-gradient(900px 600px at 85% -10%, rgba(155,107,255,0.22), transparent 60%),
+      radial-gradient(800px 500px at -10% 30%, rgba(59,232,255,0.14), transparent 60%),
+      var(--bg); }
+  .bg::before { content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 56px 56px; opacity: .35;
+    mask-image: radial-gradient(ellipse at 50% 20%, #000 30%, transparent 75%); }
+
+  .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+  /* nav */
+  nav { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(14px); background: rgba(5,7,13,0.7); border-bottom: 1px solid var(--line); }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: var(--mono); font-size: 14px; letter-spacing: .5px; }
+  .logo b { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--muted); }
+  .nav-links a:hover { color: var(--text); }
+  .status { font-family: var(--mono); font-size: 12px; color: var(--green); display: flex; align-items: center; gap: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: .35; } }
+
+  /* hero */
+  .hero { padding: 88px 0 64px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 48px; align-items: center; }
+  .tag { font-family: var(--mono); font-size: 13px; color: var(--cyan); margin-bottom: 18px; }
+  h1 { font-size: clamp(38px, 6vw, 68px); line-height: 1.04; font-weight: 700; letter-spacing: -1.5px; }
+  h1 .grad { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .typed { font-family: var(--mono); font-size: clamp(15px, 2vw, 18px); color: var(--muted); margin-top: 20px; min-height: 1.6em; }
+  .typed .cursor { display: inline-block; width: 9px; height: 1.1em; background: var(--cyan); vertical-align: -3px; margin-left: 3px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .lead { font-size: 18px; color: #c5cfdf; max-width: 560px; margin-top: 18px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn { font-family: var(--mono); font-size: 14px; padding: 13px 22px; border-radius: 10px; border: 1px solid var(--line-strong); transition: .2s; }
+  .btn.primary { background: var(--grad); color: #05070d; border: 0; font-weight: 500; box-shadow: 0 0 30px rgba(59,232,255,.25); }
+  .btn:hover { transform: translateY(-2px); border-color: var(--cyan); }
+
+  .avatar { position: relative; aspect-ratio: 1; max-width: 360px; justify-self: center; width: 100%; }
+  .avatar .ring { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 0deg, var(--cyan), var(--violet), transparent 60%, var(--cyan)); animation: spin 8s linear infinite; filter: blur(.5px); }
+  .avatar .ring::after { content: ""; position: absolute; inset: 3px; border-radius: 50%; background: var(--bg); }
+  .avatar img { position: absolute; inset: 14px; width: calc(100% - 28px); height: calc(100% - 28px); border-radius: 50%; object-fit: cover; clip-path: circle(45.5%); transform: scale(1.09); }
+  .avatar .chip { position: absolute; font-family: var(--mono); font-size: 12px; padding: 7px 12px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line-strong); backdrop-filter: blur(10px); white-space: nowrap; }
+  .chip.c1 { top: 8%; left: -6%; } .chip.c2 { bottom: 14%; right: -8%; } .chip.c3 { bottom: -2%; left: 10%; }
+  .chip i { color: var(--green); font-style: normal; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* sections */
+  section { padding: 72px 0; }
+  .eyebrow { font-family: var(--mono); font-size: 13px; color: var(--cyan); letter-spacing: 1px; }
+  h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 700; letter-spacing: -.8px; margin: 8px 0 14px; }
+  .sub { color: var(--muted); max-width: 640px; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); backdrop-filter: blur(12px); }
+
+  /* pipeline */
+  .pipeline { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 40px; position: relative; }
+  .node { padding: 22px 18px; position: relative; transition: .25s; }
+  .node:hover { border-color: var(--line-strong); transform: translateY(-4px); }
+  .node .n { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .node .ico { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; margin: 12px 0 14px; background: rgba(59,232,255,.08); border: 1px solid var(--line-strong); color: var(--cyan); }
+  .node h3 { font-size: 17px; font-weight: 600; }
+  .node p { font-size: 14px; color: var(--muted); margin-top: 6px; }
+  .node:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -15px; width: 16px; height: 2px; background: var(--grad); z-index: 1; }
+  .node:last-child { border-color: rgba(77,255,166,.4); }
+  .node:last-child .ico { color: var(--green); border-color: rgba(77,255,166,.5); background: rgba(77,255,166,.08); }
+
+  /* about */
+  .about { display: grid; grid-template-columns: 1.2fr .8fr; gap: 32px; margin-top: 36px; }
+  .term { padding: 0; overflow: hidden; }
+  .term-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: 12px; color: var(--muted); }
+  .term-bar span { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
+  .term-bar span:nth-child(2) { background: #febc2e; } .term-bar span:nth-child(3) { background: #28c840; margin-right: 8px; }
+  .term-body { padding: 24px; font-size: 16.5px; color: #cdd6e4; }
+  .term-body p + p { margin-top: 14px; }
+  .term-body .prompt { font-family: var(--mono); font-size: 13px; color: var(--cyan); margin-bottom: 12px; }
+  .term-body strong { color: var(--text); }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .stat { padding: 22px 20px; }
+  .about-photo { grid-column: 1 / -1; overflow: hidden; aspect-ratio: 16 / 10; padding: 0; }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; filter: saturate(1.05) contrast(1.05); }
+  .about-photo .scan { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(transparent 0, rgba(59,232,255,.18) 50%, transparent 100%); height: 30%; animation: scan 4s linear infinite; mix-blend-mode: screen; }
+  .about-photo .tagline { position: absolute; left: 14px; bottom: 12px; font-family: var(--mono); font-size: 12px; color: var(--green); background: rgba(5,7,13,.75); padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(77,255,166,.35); }
+  @keyframes scan { from { transform: translateY(-100%); } to { transform: translateY(340%); } }
+  .stat .v { font-size: 34px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; line-height: 1.1; }
+  .stat .l { font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+
+  .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .skills span { font-family: var(--mono); font-size: 13px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: rgba(16,24,44,.5); color: #c5cfdf; }
+  .skills span.ai { border-color: rgba(155,107,255,.55); color: #d8c8ff; }
+
+  /* timeline */
+  .timeline { margin-top: 36px; display: grid; gap: 14px; }
+  .job { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 22px 24px; }
+  .job .when { font-family: var(--mono); font-size: 13px; color: var(--cyan); }
+  .job h3 { font-size: 18px; font-weight: 600; }
+  .job .co { color: var(--muted); font-size: 14.5px; }
+  .job ul { margin-top: 10px; padding-left: 18px; color: #c5cfdf; font-size: 15px; }
+  .job li { margin: 4px 0; }
+  .job li::marker { color: var(--violet); }
+  .job.new { border-color: rgba(155,107,255,.45); }
+  .badge { font-family: var(--mono); font-size: 11px; padding: 3px 8px; border-radius: 6px; background: rgba(155,107,255,.18); color: #d8c8ff; margin-left: 8px; vertical-align: 3px; }
+
+  /* projects */
+  .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 36px; }
+  .proj { overflow: hidden; display: flex; flex-direction: column; transition: .25s; }
+  .proj:hover { border-color: var(--line-strong); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(59,232,255,.08); }
+  .proj .thumb { height: 150px; background: #fff; display: grid; place-items: center; padding: 18px; }
+  .proj .thumb img { max-height: 114px; object-fit: contain; }
+  .proj .body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+  .proj .kind { font-family: var(--mono); font-size: 12px; color: var(--cyan); }
+  .proj h3 { font-size: 19px; margin: 4px 0 10px; }
+  .proj dl { font-size: 14px; color: var(--muted); display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; }
+  .proj dt { color: #6f7c93; }
+  .proj dd { color: #c5cfdf; }
+  .proj .links { display: flex; gap: 10px; margin-top: auto; padding-top: 18px; }
+  .proj .links a { font-family: var(--mono); font-size: 13px; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line-strong); }
+  .proj .links a:first-child { background: rgba(59,232,255,.1); color: var(--cyan); }
+  .proj .links a:hover { border-color: var(--cyan); }
+
+  /* contact */
+  .contact { padding: 44px; text-align: center; margin-top: 8px; background: linear-gradient(135deg, rgba(59,232,255,.08), rgba(155,107,255,.12)); }
+  .contact h2 { margin-top: 0; }
+  .contact .ctas { justify-content: center; }
+  footer { padding: 32px 0 40px; text-align: center; font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* interactive layer */
+  .progress { position: fixed; top: 0; left: 0; height: 2px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: var(--grad); z-index: 20; box-shadow: 0 0 12px var(--cyan); }
+  .cursor-glow { position: fixed; top: 0; left: 0; width: 520px; height: 520px; margin: -260px 0 0 -260px; border-radius: 50%; pointer-events: none; z-index: 0;
+    background: radial-gradient(circle, rgba(59,232,255,.13), rgba(155,107,255,.07) 40%, transparent 70%); will-change: transform; opacity: 0; transition: opacity .4s; }
+  .cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 30; border-radius: 50%; will-change: transform; opacity: 0; transition: opacity .3s; }
+  .cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+  .cursor-ring { width: 34px; height: 34px; margin: -17px 0 0 -17px; border: 1.5px solid rgba(59,232,255,.55); transition: opacity .3s, width .25s, height .25s, margin .25s, background .25s, border-color .25s; }
+  .cursor-ring.hover { width: 58px; height: 58px; margin: -29px 0 0 -29px; background: rgba(155,107,255,.12); border-color: var(--violet); }
+  body.has-cursor .cursor-glow, body.has-cursor .cursor-dot, body.has-cursor .cursor-ring { opacity: 1; }
+  main, nav, footer { position: relative; z-index: 1; }
+
+  /* spotlight that follows the mouse inside cards */
+  .panel { position: relative; }
+  .panel::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .3s;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(59,232,255,.12), transparent 70%); }
+  .panel:hover::before { opacity: 1; }
+  .tilt { transform-style: preserve-3d; transition: transform .25s ease, border-color .25s, box-shadow .25s; }
+  .btn { display: inline-block; }
+
+  /* section fade in / out */
+  section > .wrap { transition: opacity .8s ease, transform .8s ease, filter .8s ease; }
+  section.away > .wrap { opacity: .15; transform: translateY(30px) scale(.985); filter: blur(2px); }
+  .reveal { transition-delay: var(--d, 0s); }
+
+  @media (max-width: 960px) {
+    .pipeline { grid-template-columns: 1fr 1fr; }
+    .node:not(:last-child)::after { display: none; }
+    .projects { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding-top: 48px; gap: 40px; }
+    .avatar { max-width: 260px; order: -1; }
+    .chip.c1 { left: -4%; } .chip.c2 { right: -4%; }
+    .about { grid-template-columns: 1fr; }
+    .job { grid-template-columns: 1fr; gap: 6px; padding: 20px; }
+    .projects, .pipeline { grid-template-columns: 1fr; }
+    .contact { padding: 32px 20px; }
+    section { padding: 56px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    section.away > .wrap { opacity: 1; transform: none; filter: none; }
+  }
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="progress" id="progress"></div>
+<div class="cursor-glow" id="glow"></div>
+<div class="cursor-ring" id="ring"></div>
+<div class="cursor-dot" id="dot"></div>
+
+<nav>
+  <div class="wrap">
+    <a href="#home" class="logo">&gt; <b>jayden.huang</b>_</a>
+    <div class="nav-links">
+      <a href="#system">System</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    </div>
+    <div class="status"><span class="dot"></span>open to work</div>
+  </div>
+</nav>
+
+<main id="home">
+  <div class="wrap hero">
+    <div>
+      <div class="tag">// AI-powered social media manager · Singapore</div>
+      <h1>Content that <span class="grad">captures leads</span>, not just views.</h1>
+      <div class="typed"><span id="typed"></span><span class="cursor"></span></div>
+      <p class="lead">I don't stop at content. I build the system behind it, from the first video to the qualified lead in your sales team's inbox.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#projects">View projects →</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="avatar">
+      <div class="ring"></div>
+      <img src="assets/Corporate_photo.png" alt="Jayden Huang">
+      <div class="chip c1"><i>●</i> AI content</div>
+      <div class="chip c2"><i>●</i> lead automation</div>
+      <div class="chip c3"><i>●</i> paid ads</div>
+    </div>
+  </div>
+
+  <section id="system">
+    <div class="wrap">
+      <div class="eyebrow reveal">01 / THE SYSTEM</div>
+      <h2 class="reveal">From scroll to qualified lead</h2>
+      <p class="sub reveal">Most social media managers hand off after the post goes live. I build the whole pipeline, so every lead is captured, followed up and qualified.</p>
+      <div class="pipeline">
+        <div class="panel node reveal">
+          <div class="n">STEP 01</div>
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg></div>
+          <h3>AI-assisted content</h3>
+          <p>Scripts, filming and editing, sped up with AI tools.</p>
+        </div>
+        <div class="panel node reveal">
+          <div class="n">STEP 02</div>
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l15-6v14L3 13z"/><path d="M7 13v5a2 2 0 0 0 4 0v-4"/></svg></div>
+          <h3>Meta &amp; TikTok ads</h3>
+          <p>Lead-gen campaigns, targeting and budget management.</p>
+        </div>
+        <div class="panel node reveal">
+          <div class="n">STEP 03</div>
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h8"/></svg></div>
+          <h3>Lead landing pages</h3>
+          <p>Fast pages with email capture, built with AI coding tools.</p>
+        </div>
+        <div class="panel node reveal">
+          <div class="n">STEP 04</div>
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5A8 8 0 1 1 21 12z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg></div>
+          <h3>Automated follow-up</h3>
+          <p>Comment-to-DM and WhatsApp chatbots that reply instantly.</p>
+        </div>
+        <div class="panel node reveal">
+          <div class="n">OUTPUT</div>
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Qualified leads</h3>
+          <p>Only serious leads reach sales, with the details already collected.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="eyebrow reveal">02 / ABOUT</div>
+      <h2 class="reveal">Not just a social media manager</h2>
+      <div class="about">
+        <div class="panel term reveal">
+          <div class="term-bar"><span></span><span></span><span></span>about_jayden.md</div>
+          <div class="term-body">
+            <div class="prompt">$ cat about_jayden.md</div>
+            <p><strong>AI-powered social media manager who doesn't stop at content.</strong> I build the system behind it: AI-assisted video production, Meta and TikTok ads, lead landing pages and automated follow-up, so every lead is captured and qualified.</p>
+            <p>4+ years building brand channels from zero for education and property companies. I write, direct, film and edit short-form video, lead overseas editing teams and coach people on camera.</p>
+            <p>I use AI every day: to speed up scripting and production, to analyse ad performance, and to build the landing pages and automations that turn views into leads. Fluent in English and Mandarin.</p>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="panel about-photo reveal"><img src="assets/AboutMe.png" alt="Jayden Huang"><div class="scan"></div><div class="tagline">// system.online</div></div>
+          <div class="panel stat reveal"><div class="v">4+</div><div class="l">years building brand channels</div></div>
+          <div class="panel stat reveal"><div class="v">150+</div><div class="l">leads a month from ad campaigns (property)</div></div>
+          <div class="panel stat reveal"><div class="v">24</div><div class="l">videos a month in production</div></div>
+          <div class="panel stat reveal"><div class="v">130+</div><div class="l">lead comments from one automated lead-magnet video</div></div>
+        </div>
+      </div>
+      <div class="skills reveal">
+        <span class="ai">AI content production</span><span class="ai">AI-assisted ad analysis</span><span class="ai">Claude &amp; Claude Code</span><span class="ai">ChatGPT</span><span class="ai">Midjourney</span>
+        <span>Meta Ads Manager</span><span>TikTok Ads Manager</span><span>Google Ads</span><span>ManyChat</span><span>Mailchimp</span>
+        <span>Scriptwriting</span><span>Directing talent</span><span>Filming &amp; editing</span><span>Premiere Pro</span><span>CapCut</span><span>Lead generation</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="eyebrow reveal">03 / EXPERIENCE</div>
+      <h2 class="reveal">Where I've built it</h2>
+      <div class="timeline">
+        <div class="panel job new reveal">
+          <div class="when">Ongoing</div>
+          <div>
+            <h3>AI &amp; Automation Projects <span class="badge">NEW</span></h3>
+            <div class="co">Independent</div>
+            <ul>
+              <li>Built and launched lead landing pages and content websites with AI coding tools (Claude), including email-capture funnels for digital products</li>
+              <li>Built an AI script-writing tool for short-form video, with hook, topic and CTA flows</li>
+              <li>Automated social posting workflows across multiple Threads accounts</li>
+              <li>Building a Click-to-WhatsApp ads funnel with an automated lead-qualifying chatbot</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel job reveal">
+          <div class="when">May 2025 – Present</div>
+          <div>
+            <h3>Social Media Manager</h3>
+            <div class="co">Grade Solution Learning Centre</div>
+            <ul>
+              <li>Grew Facebook 1K → 3.2K, Instagram under 100 → 1.2K and YouTube 0 → ~1K in under 18 months</li>
+              <li>Organic content and paid ad creatives for lead gen; student sign-ups nearly doubled within a year</li>
+              <li>Built ManyChat comment-to-DM automation that captured and routed leads automatically</li>
+              <li>Lead production of 24 videos a month with 6–8 overseas editors</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel job reveal">
+          <div class="when">Mar 2024 – Mar 2025</div>
+          <div>
+            <h3>Social Media Specialist</h3>
+            <div class="co">Hippo Prop Pte Ltd</div>
+            <ul>
+              <li>Built TikTok, Instagram and Facebook from scratch</li>
+              <li>Planned lead-gen and recruitment ad campaigns, generating 150+ leads per month</li>
+              <li>Directed 8–15 property agents and coached the 4 lead agents on camera</li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel job reveal">
+          <div class="when">Mar 2021 – Nov 2023</div>
+          <div>
+            <h3>Content Creator &amp; Producer</h3>
+            <div class="co">OrangeTee &amp; Tie</div>
+            <ul>
+              <li>Produced 60+ videos end to end for TikTok and YouTube</li>
+              <li>Managed the company's TikTok and YouTube channels and social media ads</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <div class="eyebrow reveal">04 / PROJECTS</div>
+      <h2 class="reveal">Brand portfolio</h2>
+      <p class="sub reveal">Channels I've built and run. Each one has a link to the live channel and a project breakdown.</p>
+      <div class="projects">
+        <article class="panel proj reveal">
+          <div class="thumb"><img src="assets/GradeSolution.png" alt="Grade Solution logo"></div>
+          <div class="body">
+            <div class="kind">Learning centre</div>
+            <h3>Grade Solution</h3>
+            <dl><dt>Goal</dt><dd>Lead-gen ads &amp; content strategy</dd><dt>Role</dt><dd>Social Media Manager</dd><dt>Period</dt><dd>2025 – present</dd></dl>
+            <div class="links"><a href="https://www.instagram.com/gradesolution/" target="_blank" rel="noopener">Visit ↗</a><a href="https://docs.google.com/presentation/d/1vKEi3Gb39o4esCBFsQynW7YpodD0Q9nZRkmvkuIugf4/edit?usp=sharing" target="_blank" rel="noopener">Details</a></div>
+          </div>
+        </article>
+        <article class="panel proj reveal">
+          <div class="thumb"><img src="assets/SmartSeller.jpg" alt="SmartSeller logo"></div>
+          <div class="body">
+            <div class="kind">Real estate</div>
+            <h3>SmartSeller</h3>
+            <dl><dt>Company</dt><dd>Hippo Prop Pte Ltd</dd><dt>Goal</dt><dd>Lead generation / brand building</dd><dt>Role</dt><dd>Social Media Specialist</dd><dt>Period</dt><dd>2024 – 2025</dd></dl>
+            <div class="links"><a href="https://www.tiktok.com/@sg.smartseller" target="_blank" rel="noopener">Visit ↗</a><a href="https://drive.google.com/file/d/1vq1MSsNxxqkk9drYMmF3o3LaXlxMkQ5Z/view?usp=sharing" target="_blank" rel="noopener">Details</a></div>
+          </div>
+        </article>
+        <article class="panel proj reveal">
+          <div class="thumb"><img src="assets/NewTown.png" alt="New Town Engineering logo"></div>
+          <div class="body">
+            <div class="kind">Construction equipment</div>
+            <h3>New Town Engineering</h3>
+            <dl><dt>Goal</dt><dd>Short-form content strategy</dd><dt>Role</dt><dd>Digital Creator</dd><dt>Period</dt><dd>2024 – present</dd></dl>
+            <div class="links"><a href="https://www.tiktok.com/@newtownsg" target="_blank" rel="noopener">Visit ↗</a><a href="https://docs.google.com/presentation/d/1-yCBhk3KvT8VtPSFvt7cFkmsWZInH1AZjJR4Plc_sLU/edit?usp=sharing" target="_blank" rel="noopener">Details</a></div>
+          </div>
+        </article>
+        <article class="panel proj reveal">
+          <div class="thumb"><img src="assets/OrangeTee.jpg" alt="OrangeTee &amp; Tie logo"></div>
+          <div class="body">
+            <div class="kind">Real estate</div>
+            <h3>OrangeTee &amp; Tie</h3>
+            <dl><dt>Goal</dt><dd>Brand building</dd><dt>Role</dt><dd>Producer / Content Creator</dd><dt>Period</dt><dd>2021 – 2023</dd></dl>
+            <div class="links"><a href="https://www.youtube.com/@orangeteeagentshub" target="_blank" rel="noopener">Visit ↗</a><a href="https://docs.google.com/presentation/d/14MlbXdhktPlqGdL-8Qso1HYvad1vGUBuNUHT38UCynQ/edit?usp=sharing" target="_blank" rel="noopener">Details</a></div>
+          </div>
+        </article>
+        <article class="panel proj reveal">
+          <div class="thumb"><img src="assets/STWarrior.png" alt="ST Warrior logo"></div>
+          <div class="body">
+            <div class="kind">YouTube channel</div>
+            <h3>ST Warrior</h3>
+            <dl><dt>Goal</dt><dd>Personal branding / affiliate marketing</dd><dt>Role</dt><dd>Creator</dd><dt>Period</dt><dd>2016 – present</dd></dl>
+            <div class="links"><a href="https://www.youtube.com/@stwarrior9983" target="_blank" rel="noopener">Visit ↗</a><a href="https://docs.google.com/presentation/d/1UhIIfZezS_BVUA88kZI5Hfsc9I6hawX2z0ShpqYeOJE/edit?usp=sharing" target="_blank" rel="noopener">Details</a></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="panel contact reveal">
+        <div class="eyebrow">05 / CONTACT</div>
+        <h2>Let's build your lead system</h2>
+        <p class="sub" style="margin: 0 auto;">Hiring, or need content plus automation for your brand? Send me a message.</p>
+        <div class="ctas">
+          <a class="btn primary" href="mailto:classic19931126@gmail.com">Email me →</a>
+          <a class="btn" href="#projects">See my work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 Jayden Huang · built with AI</footer>
+
+<script>
+  // typing line
+  (function () {
+    var el = document.getElementById('typed');
+    var lines = ['> AI-assisted content', '> Meta & TikTok ads', '> lead landing pages', '> automated follow-up', '> qualified leads ✓'];
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { el.textContent = lines.join('  '); return; }
+    var i = 0, j = 0, del = false;
+    function tick() {
+      var s = lines[i];
+      el.textContent = s.slice(0, j);
+      if (!del && j < s.length) { j++; setTimeout(tick, 55); }
+      else if (!del) { del = true; setTimeout(tick, 1400); }
+      else if (j > 0) { j--; setTimeout(tick, 25); }
+      else { del = false; i = (i + 1) % lines.length; setTimeout(tick, 300); }
+    }
+    tick();
+  })();
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // reveal items: fade in when they enter, fade out when they leave (staggered)
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) { items.forEach(function (e) { e.classList.add('in'); }); return; }
+    document.querySelectorAll('.pipeline, .stats, .projects, .timeline').forEach(function (g) {
+      g.querySelectorAll('.reveal').forEach(function (el, i) { el.style.setProperty('--d', (i * 0.08) + 's'); });
+    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.target.classList.toggle('in', e.isIntersecting); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (e) { io.observe(e); });
+  })();
+
+  // whole sections soften and fade as they scroll away
+  (function () {
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.target.classList.toggle('away', !e.isIntersecting); });
+    }, { threshold: 0, rootMargin: '-12% 0px -12% 0px' });
+    document.querySelectorAll('section').forEach(function (s) { io.observe(s); });
+  })();
+
+  // scroll progress bar
+  (function () {
+    var bar = document.getElementById('progress');
+    function upd() {
+      var h = document.documentElement.scrollHeight - innerHeight;
+      bar.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')';
+    }
+    addEventListener('scroll', upd, { passive: true }); upd();
+  })();
+
+  // spotlight inside cards follows the mouse (also works on tap)
+  document.querySelectorAll('.panel').forEach(function (p) {
+    p.addEventListener('pointermove', function (e) {
+      var r = p.getBoundingClientRect();
+      p.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      p.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  if (finePointer && !reduce) {
+    // custom cursor + background glow that trail the mouse
+    (function () {
+      var glow = document.getElementById('glow'), ring = document.getElementById('ring'), dot = document.getElementById('dot');
+      var mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my, gx = mx, gy = my;
+      addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; document.body.classList.add('has-cursor'); });
+      document.addEventListener('pointerleave', function () { document.body.classList.remove('has-cursor'); });
+      document.querySelectorAll('a, .panel, .skills span').forEach(function (el) {
+        el.addEventListener('pointerenter', function () { ring.classList.add('hover'); });
+        el.addEventListener('pointerleave', function () { ring.classList.remove('hover'); });
+      });
+      (function loop() {
+        rx += (mx - rx) * 0.2; ry += (my - ry) * 0.2;
+        gx += (mx - gx) * 0.07; gy += (my - gy) * 0.07;
+        dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+        ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+        glow.style.transform = 'translate(' + gx + 'px,' + gy + 'px)';
+        requestAnimationFrame(loop);
+      })();
+    })();
+
+    // 3D tilt on cards
+    document.querySelectorAll('.node, .proj, .stat').forEach(function (c) {
+      c.classList.add('tilt');
+      c.addEventListener('pointermove', function (e) {
+        var r = c.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        c.style.transform = 'perspective(800px) rotateX(' + (-y * 8) + 'deg) rotateY(' + (x * 8) + 'deg) translateY(-4px)';
+      });
+      c.addEventListener('pointerleave', function () { c.style.transform = ''; });
+    });
+
+    // magnetic buttons
+    document.querySelectorAll('.btn').forEach(function (b) {
+      b.addEventListener('pointermove', function (e) {
+        var r = b.getBoundingClientRect();
+        b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.25) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.35) + 'px)';
+      });
+      b.addEventListener('pointerleave', function () { b.style.transform = ''; });
+    });
+
+    // photo and floating tags drift with the mouse (parallax)
+    (function () {
+      var av = document.querySelector('.avatar'), img = av.querySelector('img'), chips = av.querySelectorAll('.chip');
+      addEventListener('pointermove', function (e) {
+        var x = e.clientX / innerWidth - 0.5, y = e.clientY / innerHeight - 0.5;
+        img.style.transform = 'scale(1.09) translate(' + (x * -8) + 'px,' + (y * -8) + 'px)';
+        chips.forEach(function (c, i) {
+          var k = (i + 1) * 10;
+          c.style.transform = 'translate(' + (x * k) + 'px,' + (y * k) + 'px)';
+        });
+      });
+    })();
+  }
+</script>
+</body>
 </html>
